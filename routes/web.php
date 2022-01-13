@@ -22,7 +22,14 @@ Route::get('/', function () {
     
 });
 
+Route::get('/admin/pages', function () {
+    return view('home');
+});
+
 Auth::routes();
+
+
+// Route::get('/admin/pages', \App\Http\Livewire\admin\pages\idx::class)->name('admin.pages');
 
 Route::get('/home', \App\Http\Livewire\Index::class)->name('home');
 Route::get('/author', \App\Http\Livewire\Author\Idx::class)->name('author.home');
@@ -36,4 +43,8 @@ Route::get('/user/refresh', function () {
     \Session::flush();
     return redirect('/');
 })->name('user.refresh');
+
+
+Route::post('pstCreateCommittee',[committeeProfilController::class,'pstCreateCommittee'])->name('create.pstCreateCommittee');
+Route::post('pstViewCommittee',[committeeProfilController::class,'pstViewCommittee'])->name('view.pstCreateCommittee');
 
